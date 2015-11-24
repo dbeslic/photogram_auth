@@ -1,5 +1,9 @@
 source 'http://rubygems.org'
 
+gem 'starter_generators', :git => "http://github.com/rbetina/starter_generators.git"
+
+gem 'devise'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
@@ -52,3 +56,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'factory_girl_rails', group: [:test, :development]
 gem 'faker', group: [:test, :development]
 gem 'shoulda', group: [:test, :development]
+
+
