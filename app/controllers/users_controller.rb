@@ -1,12 +1,14 @@
 class UsersController < ApplicationController
 
-  def users
+  def index
     @users = User.all
 
     render 'index'
   end
 
-def user_page
+def show
+  @user = User.find(params[:id])
+# Come back to this, after completing the Photo format
 
 end
 

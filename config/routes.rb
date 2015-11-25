@@ -1,11 +1,14 @@
 Rails.application.routes.draw do
 
+
   root "photos#index"
 
-  get "/users", :controller => "users", :action => "users"
-  get "/users/:id", :controller => "users", :action => "user_page"
+  devise_for :users
 
-  # Routes for the Comment resource:
+  get "/users", :controller => "users", :action => "index"
+  get "/users/:id", :controller => "users", :action => "show"
+
+  # Routes for the Comment resource:f
   # CREATE
   get "/comments/new", :controller => "comments", :action => "new"
   post "/create_comment", :controller => "comments", :action => "create"
@@ -56,6 +59,5 @@ Rails.application.routes.draw do
   get "/delete_photo/:id", :controller => "photos", :action => "destroy"
   #------------------------------
 
-  devise_for :users
 
 end

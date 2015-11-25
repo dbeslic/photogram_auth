@@ -1,6 +1,8 @@
 class PhotosController < ApplicationController
   def index
     @photos = Photo.all
+    # @user_contributor_id = Photo.pluck(user_id)
+    # @user_contributor_name = Users.findby(@user_contributor_id).username
   end
 
   def show
