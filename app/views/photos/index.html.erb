@@ -11,14 +11,18 @@
 <% @photos.each do |photo| %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= photo.user.username %></h3>
+    <h3 class="panel-title"><%= photo.user.username %>
+    <small>   2 days ago NOT DYNAMIC </small>
+    </h3>
   </div>
   <div class="panel-body">
-    <img src = "<%= photo.image %>" width = 550 pt>
+    <a href = "/photos/<%= photo.id %>" >
+      <img src = "<%= photo.image %>" width = 450 pt>
+    </a>
     <h5><%= photo.caption %></h5>
     <h6>Photo ID <%= photo.id %></h6>
-    <%= Comment.where({ :photo_id => photo.id}).each do |comment| %>
-    <p><% comment.body %></p>
+    <%= Comment.where({ :photo_id => photo.id}).each do |comment| =%>
+    <p><%= comment.body =%></p>
     <% end %>
   </div>
 </div>
