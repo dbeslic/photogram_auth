@@ -7,12 +7,12 @@
   </h1>
 </div>
 
-
 <% @photos.each do |photo| %>
 <div class="panel panel-default">
   <div class="panel-heading">
-    <h3 class="panel-title"><%= photo.user.username %>
-    <small>   2 days ago NOT DYNAMIC </small>
+    <h3 class="panel-title">
+    <a href="/users/<%= photo.user.id %>"> <%= photo.user.username %></a>
+      <small> <%= time_ago_in_words(photo.created_at) %> </small>
     </h3>
   </div>
   <div class="panel-body">
@@ -20,10 +20,12 @@
       <img src = "<%= photo.image %>" width = 450 pt>
     </a>
     <h5><%= photo.caption %></h5>
-    <h6>Photo ID <%= photo.id %></h6>
-    <%= Comment.where({ :photo_id => photo.id}).each do |comment| =%>
-    <p><%= comment.body =%></p>
+    <% photo.comments.each do |comment| %>
+    <h6><%= comment.user.username %> <small><%= time_ago_in_words(comment.created_at) %></small> </h6>
+    <p><%= comment.body %></p>
     <% end %>
+
+
   </div>
 </div>
 <% end %>
