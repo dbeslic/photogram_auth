@@ -1,32 +1,33 @@
-<div class="page-header">
-  <h1>
-    Photos
 
-    <a href="/photos/new" class="btn btn-lg btn-success">New Photo</a>
+    <div class="col-md-8 col-md-offset-2" style="padding-bottom: 20px;">
+      <a href="/photos/new" class="btn btn-default btn-block" >
+        <i class="fa fa-plus"></i>
+      </a>
 
-  </h1>
-</div>
+    </div>
 
-<% @photos.each do |photo| %>
-<div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">
-    <a href="/users/<%= photo.user.id %>"> <%= photo.user.username %></a>
-      <small> <%= time_ago_in_words(photo.created_at) %> </small>
-    </h3>
+  <% @photos.each do |photo| %>
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h3 class="panel-title">
+          <a href="/users/<%= photo.user.id %>"> <%= photo.user.username %></a>
+          <small> <%= time_ago_in_words(photo.created_at) %> </small>
+        </h3>
+      </div>
+      <div class="panel-body">
+        <a href = "/photos/<%= photo.id %>" >
+          <img src = "<%= photo.image %>" class="img-responsive">
+        </a>
+        <h5><%= photo.caption %></h5>
+        <% photo.comments.each do |comment| %>
+        <h6><%= comment.user.username %> <small><%= time_ago_in_words(comment.created_at) %></small> </h6>
+        <p><%= comment.body %></p>
+        <% end %>
+
+
+      </div>
+    </div>
   </div>
-  <div class="panel-body">
-    <a href = "/photos/<%= photo.id %>" >
-      <img src = "<%= photo.image %>" width = 450 pt>
-    </a>
-    <h5><%= photo.caption %></h5>
-    <% photo.comments.each do |comment| %>
-    <h6><%= comment.user.username %> <small><%= time_ago_in_words(comment.created_at) %></small> </h6>
-    <p><%= comment.body %></p>
-    <% end %>
-
-
-  </div>
-</div>
-<% end %>
+  <% end %>
 
